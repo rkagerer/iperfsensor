@@ -1,12 +1,14 @@
 iperfsensor for PRTG
 ====================
 
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat
+)](http://mit-license.org)
+[![GitHub release](https://img.shields.io/github/release/rkagerer/iperfsensor.svg)](https://github.com/rkagerer/iperfsensor/blob/master/iperfsensor.sh)
+
 This script runs [iPerf][1] to measure bandwidth between two nodes of a network, and reports the results in a format
 compatible with PRTG's [SSH Script Advanced][2] sensor.
 
 It has minimal dependancies and even works on a router flashed with the open-source [Tomato][3] firmware.
-
-##### Latest Version: 1.0.1
 
 ![Gauges](http://i.imgur.com/h8ybAzj.png)
 
