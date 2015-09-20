@@ -36,7 +36,7 @@ It has minimal dependancies and even works on a router flashed with the open-sou
 
     ```sh
     cd /var/prtg/scriptsxml
-    wget http://rawgit.com/rkagerer/iperfsensor/master/iperfsensor.sh`)
+    wget http://rawgit.com/rkagerer/iperfsensor/master/iperfsensor.sh
     chmod +x iperfsensor.sh
     ```
 
