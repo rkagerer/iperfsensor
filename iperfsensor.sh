@@ -1,15 +1,18 @@
+# iperfsensor v1.0.1 (2015-Sep-20)
+# iPerf sensor for PRTG
+# Author: rkagerer
+# For the latest version, see https://github.com/rkagerer/iperfsensor/
+#
 # This script is intended to run with minimal dependancies, where only a limited subset 
-# of Linux commands are supported. 
-  
-# Run iPerf using parameters passed in, but append a few we require (overriding any 
-# conflicting values the user may have passed in): 
+# of Linux commands are supported.
+
+# Run iPerf using parameters passed in, but override a few we require:
 # "-f m" to format Transfer volume in MBytes and Bandwidth in MBits/sec 
 # "-P 1" since parsing logic hasn't yet been implemented for parallel tests 
 # "-r"   since we're expecting to parse results of a test in both directions 
 # "2>&1" redirect stderr to stdout to prevent errors from contaminating the xml output 
-# Warning: There is no input sanitization, so be mindful of what you pass in. 
+# Warning: There is no input sanitization, so be mindful of what you pass in.
 output=$(iperf $* -f m -P 1 -r 2>&1) 
-#output=$(iperf -c 172.22.0.115 -p 9901 -L 9901 -r -f m -t 1 2>&1 ) # for debugging 
 error=$? 
  
 # Parse iPerf output.  First find lines with the word MBytes, then (treating space as 
@@ -57,15 +60,15 @@ echo "  <result>"
 echo "    <channel>Transferred</channel>" 
 echo "    <value>$amt</value>" 
 echo "    <float>1</float>" 
-#echo "    <unit>BytesBandwidth</unit>" 
+#echo "    <unit>BytesBandwidth</unit>"
 echo "    <unit>Custom</unit>" 
 echo "    <customUnit>MB</customUnit>" 
-#echo "    <volumeSize>MegaByte</volumeSize>" 
+#echo "    <volumeSize>MegaByte</volumeSize>"
 echo "    <decimalMode>1</decimalMode>" 
 echo "    <showChart>1</showChart>" 
 echo "  </result>" 
 echo "  <text>" 
-#echo -e "$output" # raw output of iperf, helpful for debugging 
+#echo -e "$output" # send raw output of iperf to PRTG, helpful for debugging 
 echo "  </text>" 
 echo "  <error>$error</error>" 
-echo "</prtg>" 
+echo "</prtg>"
