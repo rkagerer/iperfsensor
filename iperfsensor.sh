@@ -1,4 +1,4 @@
-# iperfsensor v1.0.1 (2015-Sep-20)
+# iperfsensor v1.0.3 (2015-Sep-20)
 # iPerf sensor for PRTG
 # Author: rkagerer
 # For the latest version, see https://github.com/rkagerer/iperfsensor/
@@ -8,12 +8,12 @@
 
 # Run iPerf using parameters passed in, but override a few we require:
 # "-f m" to format Transfer volume in MBytes and Bandwidth in MBits/sec 
-# "-P 1" since parsing logic hasn't yet been implemented for parallel tests 
+# "-P 1" since parsing logic hasn't yet been implemented for parallel tests
 # "-r"   since we're expecting to parse results of a test in both directions 
 # "2>&1" redirect stderr to stdout to prevent errors from contaminating the xml output 
 # Warning: There is no input sanitization, so be mindful of what you pass in.
 output=$(iperf $* -f m -P 1 -r 2>&1) 
-error=$? 
+error=$?
  
 # Parse iPerf output.  First find lines with the word MBytes, then (treating space as 
 # delimiters) return the fourth-from-last and second-from-last fields (which are 
@@ -68,7 +68,8 @@ echo "    <decimalMode>1</decimalMode>"
 echo "    <showChart>1</showChart>" 
 echo "  </result>" 
 echo "  <text>" 
-#echo -e "$output" # send raw output of iperf to PRTG, helpful for debugging 
+# if iPerf failed, send its raw output to PRTG to help with debugging
+if [ $error -ne 0 ]; then echo -e "$output"; fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
 echo "</prtg>"
