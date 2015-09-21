@@ -63,6 +63,7 @@ Also keep in mind that other, parallel traffic loads on your network will affect
 
 ### Changelog
 
+  - v1.0.4 (?):           Fix one of the URL's in comments
   - v1.0.3 (2015-Sep-20): Clean up
   - v1.0.2 (2015-Sep-20): Improvement to report errors back to PRTG
   - v1.0.1 (2015-Sep-20): Initial release
