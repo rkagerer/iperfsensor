@@ -69,7 +69,7 @@ echo "    <showChart>1</showChart>"
 echo "  </result>" 
 echo "  <text>" 
 # if iPerf failed, send its raw output to PRTG to help with debugging
-if [ "$error" -ne 0 ]; then echo -e "$output"; fi
+if [ $error -ne 0 ]; then echo -e "$output"; fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
 echo "</prtg>"
