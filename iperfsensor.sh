@@ -1,4 +1,4 @@
-# iperfsensor v1.0.2 (2015-Sep-20)
+# iperfsensor v1.0.3 (2015-Sep-20)
 # iPerf sensor for PRTG
 # Author: rkagerer
 # For the latest version, see https://github.com/rkagerer/iperfsensor/
