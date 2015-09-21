@@ -8,7 +8,7 @@
 
 # Run iPerf using parameters passed in, but override a few we require:
 # "-f m" to format Transfer volume in MBytes and Bandwidth in MBits/sec 
-# "-P 1" since parsing logic hasn't yet been implemented for parallel tests 
+# "-P 1" since parsing logic hasn't yet been implemented for parallel tests
 # "-r"   since we're expecting to parse results of a test in both directions 
 # "2>&1" redirect stderr to stdout to prevent errors from contaminating the xml output 
 # Warning: There is no input sanitization, so be mindful of what you pass in.
@@ -69,7 +69,7 @@ echo "    <showChart>1</showChart>"
 echo "  </result>" 
 echo "  <text>" 
 # if iPerf failed, send its raw output to PRTG to help with debugging
-if [ $error ]; then echo -e "$output"; fi
+if [ "$error" -ne 0 ]; then echo -e "$output"; fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
 echo "</prtg>"
