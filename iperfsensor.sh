@@ -27,7 +27,7 @@ up=$(  echo $results | awk '{printf "%.0f", $4 * 125000}')
 #amt=$( echo $results | awk '{printf "%.2f", ($1+$3) * 1048576}') 
 amt=$( echo $results | awk '{printf "%.2f", ($1+$3)}') # leave in MB for convenience 
  
-# See https://prtg.paessler.com/api.htm?tabid=7 for more info. 
+# See https://prtg.paessler.com/api.htm?username=demo&password=demodemo&tabid=7 for more info.
 # Be sure to return a valid response even when no parameters are passed in or errors occur. 
 # PRTG gets finicky and reports unintuitive errors if it doesn't like what it sees in here, 
 # even for minor things like unacceptable combinations of tags.  If you do something wrong 
