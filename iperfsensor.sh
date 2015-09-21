@@ -1,4 +1,4 @@
-# iperfsensor v1.0.2 (2015-Sep-20)
+# iperfsensor v1.0.1 (2015-Sep-20)
 # iPerf sensor for PRTG
 # Author: rkagerer
 # For the latest version, see https://github.com/rkagerer/iperfsensor/
@@ -69,7 +69,7 @@ echo "    <showChart>1</showChart>"
 echo "  </result>" 
 echo "  <text>" 
 # if iPerf failed, send its raw output to PRTG to help with debugging
-if [ $error -ne 0 ]; then echo -e "$output"; fi
+if [ $error ]; then echo -e "$output"; fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
 echo "</prtg>"
