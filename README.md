@@ -37,7 +37,7 @@ It has minimal dependancies and even works on a router flashed with the open-sou
     ```sh
     mkdir -p /var/prtg/scriptsxml
     cd /var/prtg/scriptsxml
-    wget -O iperfsensor.sh http://cdn.rawgit.com/rkagerer/iperfsensor/1.0.1/iperfsensor.sh
+    wget -O iperfsensor.sh http://cdn.rawgit.com/rkagerer/iperfsensor/1.0.2/iperfsensor.sh
     chmod +x iperfsensor.sh
     ```
 
@@ -63,7 +63,8 @@ Also keep in mind that other, parallel traffic loads on your network will affect
 
 ### Changelog
 
-  - 2015-Sep-20: Initial release
+  - v1.0.2 (2015-Sep-20): Clean up, improvement to report errors back to PRTG
+  - v1.0.1 (2015-Sep-20): Initial release
 
 ### Bling
 
