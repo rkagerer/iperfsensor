@@ -35,8 +35,9 @@ It has minimal dependancies and even works on a router flashed with the open-sou
 1.  Place iperfsensor.sh on the computer that will act as the client, e.g.:
 
     ```sh
+    mkdir -p /var/prtg/scriptsxml
     cd /var/prtg/scriptsxml
-    wget http://rawgit.com/rkagerer/iperfsensor/master/iperfsensor.sh
+    wget -O iperfsensor.sh http://cdn.rawgit.com/rkagerer/iperfsensor/1.0.1/iperfsensor.sh
     chmod +x iperfsensor.sh
     ```
 
