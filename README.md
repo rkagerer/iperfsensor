@@ -63,7 +63,9 @@ Also keep in mind that other, parallel traffic loads on your network will affect
 
 ### Changelog
 
-  - v1.0.4 (pending)    : Fix one of the URL's in comments
+  - v1.0.4 (2015-Sep-21):
+    - Fix one of the URL's in comments
+    - Escape special XML characters in error text reported to PRTG
   - v1.0.3 (2015-Sep-20): Clean up
   - v1.0.2 (2015-Sep-20): Improvement to report errors back to PRTG
   - v1.0.1 (2015-Sep-20): Initial release
