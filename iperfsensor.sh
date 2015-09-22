@@ -72,7 +72,7 @@ echo "  <text>"
 if [ $error -ne 0 ]; then
   # Escape any special XML characters - see http://daemonforums.org/showthread.php?t=4054
   output=$($output | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g'  -e  's~>~\&gt;~g')
-  echo -e "$output";
+  echo -e "$output"
 fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
