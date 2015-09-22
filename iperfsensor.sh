@@ -1,4 +1,4 @@
-# iperfsensor v1.0.3 (2015-Sep-20)
+# iperfsensor v1.0.4 (2015-Sep-21)
 # iPerf sensor for PRTG
 # Author: rkagerer
 # For the latest version, see https://github.com/rkagerer/iperfsensor/
@@ -14,7 +14,7 @@
 # Warning: There is no input sanitization, so be mindful of what you pass in.
 output=$(iperf $* -f m -P 1 -r 2>&1) 
 error=$?
- 
+
 # Parse iPerf output.  First find lines with the word MBytes, then (treating space as 
 # delimiters) return the fourth-from-last and second-from-last fields (which are 
 # Transfer and Bandwidth, respectively).  This yields two pairs of values. 
@@ -69,7 +69,11 @@ echo "    <showChart>1</showChart>"
 echo "  </result>" 
 echo "  <text>" 
 # if iPerf failed, send its raw output to PRTG to help with debugging
-if [ $error -ne 0 ]; then echo -e "$output"; fi
+if [ $error -ne 0 ]; then
+  # Escape any special XML characters - see http://daemonforums.org/showthread.php?t=4054
+  output=$($output | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g'  -e  's~>~\&gt;~g')
+  echo -e "$output";
+fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
 echo "</prtg>"
