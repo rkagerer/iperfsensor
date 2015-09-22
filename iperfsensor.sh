@@ -70,9 +70,9 @@ echo "  </result>"
 echo "  <text>" 
 # if iPerf failed, send its raw output to PRTG to help with debugging
 if [ $error -ne 0 ]; then
-  # Escape any special XML characters - see http://daemonforums.org/showthread.php?t=4054
-  output=$(echo $output | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g'  -e  's~>~\&gt;~g')
-  echo -e "$output";
+  # Escape any special XML characters
+  # Adapted from http://daemonforums.org/showthread.php?t=4054 and http://stackoverflow.com/a/1252191/589059
+  echo -e "$output" | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g' -e 's~>~\&gt;~g' -e ':a;N;$!ba;s~\n~\&#xD;\n~g'
 fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
