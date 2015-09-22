@@ -72,7 +72,9 @@ echo "  <text>"
 if [ $error -ne 0 ]; then
   # Escape any special XML characters
   # Adapted from http://daemonforums.org/showthread.php?t=4054 and http://stackoverflow.com/a/1252191/589059
-  echo -e "$output" | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g' -e 's~>~\&gt;~g' -e ':a;N;$!ba;s~\n~\&#xD;\n~g'
+  # For a quick test, try running "./iperfsensor.sh --help"
+  # Note the final sed pipe for linebreaks doesn't seem to work; PRTG ignores the CR / LF characters
+  echo -e "$output" | sed -e 's~&~\&amp;~g' -e 's~<~\&lt;~g' -e 's~>~\&gt;~g' # | sed -e ':a;N;$!ba;s~\n~\&#xD;\&#xA;\n~g'
 fi
 echo "  </text>" 
 echo "  <error>$error</error>" 
