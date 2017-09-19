@@ -12,13 +12,18 @@
 # "-r"   since we're expecting to parse results of a test in both directions 
 # "2>&1" redirect stderr to stdout to prevent errors from contaminating the xml output 
 # Warning: There is no input sanitization, so be mindful of what you pass in.
-output=$(iperf $* -f m -P 1 -r 2>&1) 
+
+## non-iperf3 command
+# output=$(iperf $* -f m -P 30 -T -r 2>&1) 
+
+## iperf3 command
+output=$(iperf3 $* -f m -P 30 -T -R 2>&1)
 error=$?
 
 # Parse iPerf output.  First find lines with the word MBytes, then (treating space as 
 # delimiters) return the fourth-from-last and second-from-last fields (which are 
 # Transfer and Bandwidth, respectively).  This yields two pairs of values. 
-results=$(echo -e "$output" | grep "MBytes" | awk '{ print $(NF-3), $(NF-1) }') 
+results=$(echo -e "$output" | grep -E "SUM.*MBytes" | awk '{ print $(NF-3), $(NF-1) }') 
 # Take those values and convert to bytes, which are needed when using PRTG "SpeedNet" units. 
 # bc isn't installed by default on Tomato, so use awk for floating point arithmetic. 
 # printf is used to avoid scientific notation that may otherwise arise. 
